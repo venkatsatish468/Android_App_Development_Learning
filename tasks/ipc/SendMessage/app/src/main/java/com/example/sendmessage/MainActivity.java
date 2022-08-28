@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -23,14 +24,20 @@ public class MainActivity extends AppCompatActivity {
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(),
-//                        "The sendind data is " + sendingText.getText().toString(),
-//                        Toast.LENGTH_LONG).show();
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.setType("text/*");
-                sendIntent.putExtra(Intent.EXTRA_TEXT,sendingText.getText().toString());
-                startActivity(Intent.createChooser(sendIntent,"Share using"));
+//                Below code is to send message using intents
+//                Intent sendIntent = new Intent();
+//                sendIntent.setAction(Intent.ACTION_SEND);
+//                sendIntent.setType("text/*");
+//                sendIntent.putExtra(Intent.EXTRA_TEXT,sendingText.getText().toString());
+//                startActivity(Intent.createChooser(sendIntent,"Share using"));
+
+//                Below code is to send message using broadcasts
+                Log.e("OnClicked","Button Clicked");
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction("com.example.sendmessage.intent.action.SEND_BROADCAST_MESSAGE");
+                broadcastIntent.putExtra(Intent.EXTRA_TEXT,sendingText.getText().toString());
+                broadcastIntent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+                getApplicationContext().sendBroadcast(broadcastIntent);
             }
         });
     }
