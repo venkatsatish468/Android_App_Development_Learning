@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SendMessage</string>
+    <string name="app_string_resource">From SendMessage application resource</string>
 </resources>

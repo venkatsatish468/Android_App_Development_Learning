@@ -6,39 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <EditText
-        android:id="@+id/sendingData"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:hint="Enter the message to send"
-        app:layout_constraintBottom_toTopOf="@+id/sendButton"
+        android:text="Data from sendMessage Application"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.778" />
+        app:layout_constraintVertical_bias="0.231" />
 
-    <Button
-        android:id="@+id/sendButton"
+    <TextView
+        android:id="@+id/sharedRes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="268dp"
-        android:text="Send Message"
+        tools:text="TextView"
+        android:textSize="25sp"
+        android:textColor="@color/design_default_color_primary"
+        android:textStyle="italic|bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/changeResBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change Resource"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="520dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.387" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
