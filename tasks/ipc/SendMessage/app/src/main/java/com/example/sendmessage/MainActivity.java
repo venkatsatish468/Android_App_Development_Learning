@@ -41,13 +41,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        Below code to change the resource value at run time
-        Button changeResBtn = (Button) findViewById(R.id.changeResBtn);
-        changeResBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+////        Below code to change the resource value at run time
+//        Button changeResBtn = (Button) findViewById(R.id.changeResBtn);
+//        changeResBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
     }
 }
