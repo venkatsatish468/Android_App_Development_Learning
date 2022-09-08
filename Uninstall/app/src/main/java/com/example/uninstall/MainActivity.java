@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 PackageManager.GET_META_DATA
         );
         for(ApplicationInfo info: infoList){
-            if((info.flags & ApplicationInfo.FLAG_SYSTEM) == 0){
+            if(!((info.flags & ApplicationInfo.FLAG_SYSTEM ) != 0)){
                 MainData data = new MainData();
                 data.setName(info.loadLabel(manager).toString());
                 data.setPackageName(info.packageName);
@@ -122,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
 //            }
             Toast.makeText(getApplicationContext(), "Application Uninstalled", Toast.LENGTH_SHORT).show();
             recreate();
+        }else{
+            Toast.makeText(getApplicationContext(), "Unable to Uninstall", Toast.LENGTH_SHORT).show();
         }
     }
 }
