@@ -41,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
         );
         for(ApplicationInfo info: infoList){
             if(!((info.flags & ApplicationInfo.FLAG_SYSTEM ) != 0)){
-                MainData data = new MainData();
-                data.setName(info.loadLabel(manager).toString());
-                data.setPackageName(info.packageName);
-                data.setLogo(info.loadIcon(manager));
-                dataList.add(data);
+                if(!(info.packageName.equals("com.example.uninstall"))){
+                    MainData data = new MainData();
+                    data.setName(info.loadLabel(manager).toString());
+                    data.setPackageName(info.packageName);
+                    data.setLogo(info.loadIcon(manager));
+                    dataList.add(data);
+                }
             }
         }
 
@@ -109,6 +111,12 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        recreate();
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
