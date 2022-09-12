@@ -19,15 +19,16 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GET READY FOR"
+        android:text="GET READY IN"
         android:textSize="22sp"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/flProgressBar"/>
+        app:layout_constraintBottom_toTopOf="@id/flRestView"/>
+
     <FrameLayout
-        android:id="@+id/flProgressBar"
+        android:id="@+id/flRestView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
@@ -67,8 +68,60 @@
                 tools:text="10"/>
         </LinearLayout>
     </FrameLayout>
+    <TextView
+        android:id="@+id/tvUpcoming"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upcoming Exercise:"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flRestView"
+        app:layout_constraintBottom_toTopOf="@id/tvNextExercise"/>
+
+    <TextView
+        android:id="@+id/tvNextExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Jumping"
+        app:layout_constraintTop_toBottomOf="@id/tvUpcoming"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:contentDescription="image"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_jumping_jacks"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/tvExerciseName"
+        app:layout_constraintTop_toBottomOf="@id/toolbarExercise" />
+
+
+    <TextView
+        android:id="@+id/tvExerciseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ExerciseName"
+        android:textColor="@color/colorAccent"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivImage"
+        tools:visibility="visible" />
+
     <FrameLayout
-        android:id="@+id/flProgressBarNew"
+        android:id="@+id/flExerciseView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
@@ -76,10 +129,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarExercise">
+        app:layout_constraintTop_toBottomOf="@id/tvExerciseName">
 
         <ProgressBar
-            android:id="@+id/progressBarNew"
+            android:id="@+id/exerciseProgressBar"
             android:layout_width="100dp"
             android:layout_height="100dp"
             style="?android:attr/progressBarStyleHorizontal"
@@ -100,7 +153,7 @@
             android:layout_gravity="center">
 
             <TextView
-                android:id="@+id/tvTimerNew"
+                android:id="@+id/tvExerciseTimer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
