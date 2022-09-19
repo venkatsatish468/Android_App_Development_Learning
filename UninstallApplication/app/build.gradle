@@ -10,7 +10,7 @@ android {
         minSdk 25
         targetSdk 32
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -24,6 +24,19 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    signingConfigs{
+        debug{
+            keyAlias 'systemKey'
+            keyPassword 'vsatish3@'
+            storeFile file('C:\\Users\\VA4991\\Documents\\KeyStoreTasks\\KeyStore.jks')
+            storePassword 'vsatish3@'
+        }
+    }
+    buildTypes {
+        debug{
+            signingConfig signingConfigs.debug
+        }
     }
 }
 

@@ -1,5 +1,7 @@
 package com.example.sevenminuteworkout
 
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -25,6 +27,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private var tts: TextToSpeech? = null
 
+    private var player: MediaPlayer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExerciseBinding.inflate(layoutInflater)
@@ -43,6 +47,16 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
     private fun setupRestView(){
 
+        try{
+            val soundURI = Uri.parse(
+                "android.resource://com.example.sevenminuteworkout/"+R.raw.press_start)
+            player = MediaPlayer.create(applicationContext,soundURI)
+            player?.isLooping = false
+            player?.start()
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
+
         binding?.flRestView?.visibility = View.VISIBLE
         binding?.tvTitle?.visibility = View.VISIBLE
         binding?.tvUpcoming?.visibility = View.VISIBLE
@@ -55,7 +69,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             restTimer?.cancel()
             restProgress =0
         }
-        speakOut("Rest Now for 10 seconds")
+//        speakOut("Rest Now for 10 seconds")
         binding?.tvNextExercise?.text = exerciseList!![currentExercisePosition + 1].getName()
         setRestProgressBar()
     }
@@ -143,6 +157,10 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if(tts != null){
             tts?.stop()
             tts?.shutdown()
+        }
+
+        if(player != null){
+            player!!.stop()
         }
         binding = null
     }
